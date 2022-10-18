@@ -14,8 +14,8 @@ Cписок наверное самое простое и частоисполь
 
 - name: print item of sorted and reversesd list
   debug:
-    msg: '{{item }}'
-  loop: '{{list_row|sort|reverse }}'
+    msg: '{{ item }}'
+  loop: '{{ list_row|sort|reverse }}'
 
 TASK [print list, reversed list and sorted list] 
 MSG:
@@ -50,23 +50,23 @@ vars:
 ```yaml
 - name: print rows
   debug:
-    msg: '{{item }}'
-  loop: '{{table|list }}'
+    msg: '{{ item }}'
+  loop: '{{ table|list }}'
 
 - name: print column
   debug:
-    msg: '{{item }}'
+    msg: '{{ item }}'
   loop: '{{ table[0]|zip(*table[1:])|list }}'
 
 - name: print elements left2rigth up2down
   debug:
-    msg: '{{item }}'
+    msg: '{{ item }}'
   loop: '{{ table|list|flatten(levels=1) }}'
 
 - name: print elements up2down left2rigth
   debug:
-    msg: '{{item }}'
-  loop: '{{table[0]|zip(*table[1:])|list|flatten(levels=1) }}'
+    msg: '{{ item }}'
+  loop: '{{ table[0]|zip(*table[1:])|list|flatten(levels=1) }}'
 ```
 
 Результат
@@ -138,13 +138,13 @@ i
 
 - name: Iterate to symvol
   debug:
-    msg: '{{item }}'
-  loop: '{{test_string|list }}'
+    msg: '{{ item }}'
+  loop: '{{ test_string|list }}'
 
 - name: Iterate to word
   debug:
-    msg: '{{item }}'
-  loop: '{{test_string.split(' ') }}'
+    msg: '{{ item }}'
+  loop: '{{ test_string.split(' ') }}'
 
 TASK [debug]
 ok: [kafka-1.my.domain] => {
@@ -200,18 +200,18 @@ vars:
 ```yaml
 - name: print dict items
   debug:
-    msg: '{{item }}'
-  loop: '{{dict_pass|dict2items }}'
+    msg: '{{ item }}'
+  loop: '{{ dict_pass|dict2items }}'
 
 - name: print sorted dict items
   debug:
-    msg: '{{item }}'
-  loop: '{{dict_pass|dictsort }}'
+    msg: '{{ item }}'
+  loop: '{{ dict_pass|dictsort }}'
 
 - name: print dict items
   debug:
-    msg: '{{item.key }} and {{ item.value.0 }} and {{ item.value.1 }}'
-  loop: '{{dict_pass|dict2items }}'
+    msg: '{{ item.key }} and {{ item.value.0 }} and {{ item.value.1 }}'
+  loop: '{{ dict_pass|dict2items }}'
 ```
 
 результат
@@ -334,8 +334,8 @@ groups - словарь, элементами которого являются 
 ```yaml
 - name: print groups as dict
   debug:
-    msg: '{{item }}'
-  loop: '{{groups|dict2items }}'
+    msg: '{{ item }}'
+  loop: '{{ groups|dict2items }}'
 
 TASK [print groups]
 MSG:
@@ -361,12 +361,12 @@ MSG:
 ```yaml
 - name: Create virtual group
   add_host:
-    name: '{{item|regex_replace('[.].*','')}}'
+    name: '{{ item|regex_replace('[.].*','')}}"
     groups:
       - firstnodes
-    ansible_host: '{{item }}'
+    ansible_host: '{{ item }}'
   when: item | regex_search('.*1')
-  loop: '{{ansible_play_hosts }}'
+  loop: '{{ ansible_play_hosts }}'
   register: result
 
 - debug:
@@ -401,7 +401,7 @@ ok: [kafka-1.my.domain] => {
   gather_facts: false
   tasks:
   - debug:
-      msg: '{{inventory_hostname }} and {{ ansible_host }}'
+      msg: '{{ inventory_hostname }} and {{ ansible_host }}'
 
 PLAY [firstnodes]
 TASK [debug]
