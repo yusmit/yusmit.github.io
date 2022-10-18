@@ -259,7 +259,7 @@ int indexOutOfBounds = numbers[5];
 
 ```java
 int [][] matrix1 = new int[2][2];
-int [][] matrix2 = {{1, 2}, {3, 4}};
+int [][] matrix2 = { {1, 2}, {3, 4} };
 
 int[] fristRow = matrix2[0];      // Get firt row
 int someElement = matrix2[1][1];  // Get one element
