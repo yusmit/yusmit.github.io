@@ -10,7 +10,7 @@ Cписок наверное самое простое и частоисполь
 ```yaml
 - name: print list, reversed list and sorted list
   debug:
-    msg: "List is {{ list_row }} \nReverse list is {{ list_row|reverse }} \nSorted list is {{ list_row|sort }}"
+    msg: "List is { { list_row } } \nReverse list is { { list_row|reverse } } \nSorted list is { { list_row|sort } }"
 
 - name: print item of sorted and reversesd list
   debug:
