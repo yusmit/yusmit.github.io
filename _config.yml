@@ -1,4 +1,4 @@
-theme: tessera-jekyll-theme
+theme: jekyll-theme-midnight
 # title: Homepage
 # description: Bookmark
 # render_with_liquid: false  # Более явное отключение
