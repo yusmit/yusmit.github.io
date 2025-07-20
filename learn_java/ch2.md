@@ -25,11 +25,13 @@
 
 Сокращенный вид записи (использует полную схему вычисления):
 
+{% raw %}
 ```java
 value &= expression;
 value |= expression;
 value ^= expression;
 ```
+{%endraw%}
 
 ### Целочисленные типы
 
@@ -40,6 +42,7 @@ value ^= expression;
 
 Разные способы записи:
 
+{% raw %}
 ```java
 int decimal = 99;
 int octal = 0755;
@@ -48,16 +51,19 @@ int binary = 0b101;
 int tenMillion = 10_000_000;
 int tenBillion = 10_000_000_000L;
 ```
+{%endraw%}
 
 ### char
 
 - `char` - 16 бит, беззнаковый, 0..2^16 - 1
 - Представляет номер символа в кодировке юникода
 
+{% raw %}
 ```java
 char literal = 'a'
 char tab = '\t'
 ```
+{%endraw%}
 
 ### Вещественные типы
 
@@ -66,13 +72,16 @@ char tab = '\t'
 
 Явное указание:
 
+{% raw %}
 ```java
 float floatWithSuffix = 36.6f;
 double doubleWithSuffix = 36.6d;
 ```
+{%endraw%}
 
 Способы записи:
 
+{% raw %}
 ```java
 double simple = -1.234;
 double exponential = -123.4e-2;
@@ -80,18 +89,22 @@ double hex = 0x1.Fp10;
 float floatWithSuffix = 36.6f;
 double withSuffix = 4d;
 ```
+{%endraw%}
 
 Особые случаи:
 
+{% raw %}
 ```java
 double positiveInfinity = 1.0 / 0.0;
 double negativeInfinity = -1.0 / 0.0;
 double nan = 0.0 / 0.0;
 boolean notEqualInself = nan != nan;
 ```
+{%endraw%}
 
 ### Класс Math
 
+{% raw %}
 ```java
 double s = Math.sin(Math.PI);
 double q = Math.sqrt(16);
@@ -99,9 +112,11 @@ double r = Math.ceil(1.01);
 int a = Math.abs(-13);
 int m = Math.max(10, 20);
 ```
+{%endraw%}
 
 ### Длинная арифметика
 
+{% raw %}
 ```java
 import java.math.*;
 
@@ -111,6 +126,7 @@ BigInteger powerOfTwo = two.pow(100);
 BigDecimal one = BigDecimal.valueOf(1);
 BigDecimal divisionResult = one.divide(new BigDecimal(powerOfTwo));
 ```
+{%endraw%}
 
 ## 2.2. Преобразование типов
 
@@ -118,6 +134,7 @@ BigDecimal divisionResult = one.divide(new BigDecimal(powerOfTwo));
 
 Многие преобразования типов можно выполнять неявно присваивая переменной с одним типом значение другого типа.
 
+{% raw %}
 ```java
 byte byteValue = 123;
 short shortValue = byteValue;
@@ -132,11 +149,13 @@ float floatFromLong = longValue;
 double doubleFromFloat = floatFromLong;
 double doubleFromInt = intValue;
 ```
+{%endraw%}
 
 ### Явное приведение
 
 При потери точности:
 
+{% raw %}
 ```java
 int intValue = 1024;
 byte byteValue = (byte) intValue;  // 0 - отбрасываются лишние старшие биты
@@ -150,6 +169,7 @@ int intFromLargeFloat = (int) largeFloat;  // Максимальное пред�
 double largeDouble = 1e100;
 float floatFromLargeDouble = (float) largeDouble;  // Бесконечность
 ```
+{%endraw%}
 
 ### Автоматическое расширение
 
@@ -162,6 +182,7 @@ float floatFromLargeDouble = (float) largeDouble;  // Бесконечность
 
 ### Неявное приведение
 
+{% raw %}
 ```java
 byte a = 1;
 a += 3
@@ -171,6 +192,7 @@ byte b = -1;
 b >>>= 7;
 // b = (byte) (b >>> 7);
 ```
+{%endraw%}
 
 ### Классы-обертки
 
@@ -183,11 +205,13 @@ b >>>= 7;
 - float - Float
 - double - Double
 
+{% raw %}
 ```java
 int privitive = 0;
 Integer reference = Integer.valueOf(primitive);  // boxing
 int backToPrimitive = reference.intValue();      // unboxing
 ```
+{%endraw%}
 
 Нужны для:
 
@@ -196,14 +220,17 @@ int backToPrimitive = reference.intValue();      // unboxing
 
 ### Конвертация в строку и обратно
 
+{% raw %}
 ```java
 long fromString = Long.parseLong("12345");
 String fromLong = Long.toString(12345);
 String concatenation = "area" + 51;
 ```
+{%endraw%}
 
 ### Полезные методы
 
+{% raw %}
 ```java
 short maxShortValue = Short.MAX_VALUE;
 
@@ -217,11 +244,13 @@ double doubleNaN = Double.NaN;
 
 boolean isNaN = Double.isNaN(doubleNaN);
 ```
+{%endraw%}
 
 ## 2.3. Массивы и строки
 
 ### Массивы
 
+{% raw %}
 ```java
 int[] numbers = new int[100];
 
@@ -229,9 +258,11 @@ String[] args = new String[1];
 
 boolean bits[] = new boolean[0];
 ```
+{%endraw%}
 
 ### Массив ненулевых значений
 
+{% raw %}
 ```java
 int[] numbers = new int[] {1, 2, 3, 4, 5};
 
@@ -240,9 +271,11 @@ boolean[] bits = new boolean[] {true, false};
 // Можно опустить new и тип массива в variable declaration
 char[] digits = {'0', '1', '2', '3', '4', '5'};
 ```
+{%endraw%}
 
 ### Работа с массивом
 
+{% raw %}
 ```java
 int[] numbers = {1, 2, 3, 4, 5};
 
@@ -254,9 +287,11 @@ int lastNumber = numbers[arrayLength - 1];
 
 int indexOutOfBounds = numbers[5];
 ```
+{%endraw%}
 
 ### Многомерные массивы
 
+{% raw %}
 ```java
 int [][] matrix1 = new int[2][2];
 int [][] matrix2 = { {1, 2}, {3, 4} };
@@ -264,9 +299,11 @@ int [][] matrix2 = { {1, 2}, {3, 4} };
 int[] fristRow = matrix2[0];      // Get firt row
 int someElement = matrix2[1][1];  // Get one element
 ```
+{%endraw%}
 
 ### Ступенчатые массивы
 
+{% raw %}
 ```java
 int[][] triangle = {
     {1, 2, 3, 4, 5},
@@ -278,9 +315,11 @@ int[][] triangle = {
 
 int theSecondRowLength = triangle[1].length;
 ```
+{%endraw%}
 
 ### Объявление метода, принимающего переменное число параметров
 
+{% raw %}
 ```java
 static int maxArray(int[] numbers) { ... };
 maxArray(new int[] {1, 2, 3});
@@ -288,9 +327,11 @@ maxArray(new int[] {1, 2, 3});
 static int maxVarargs(int... numbers) { ... };
 maxVarargs(1, 2, 3);  // Компилятор сам упакует аргументы в массив
 ```
+{%endraw%}
 
 ### Сравнение двух массивов
 
+{% raw %}
 ```java
 import Java.util.Arrays;
 
@@ -302,9 +343,11 @@ boolean equals2 = a.equals(b);             // Для массивов также
 boolean equals3 = Array.equals(a, b);      // Хорошо работает для одномерных массивов
 boolean equals4 = Array.deepEquals(a, b);  // Решение для многомернх массивов
 ```
+{%endraw%}
 
 ### Распечатка массива
 
+{% raw %}
 ```java
 int[] a = {1, 2, 3};
 
@@ -317,9 +360,11 @@ System.out.println(Arrays.toString(a));
 // Работает с многомерными массивами
 System.out.println(Arrays.deepToString(a));
 ```
+{%endraw%}
 
 ### Строки
 
+{% raw %}
 ```java
 String hello = "Hello";
 String specialChars = "\r\n\t\"\\";
@@ -332,9 +377,11 @@ char[] charsFromString = string.toCharArray();
 // Строка не должны заканчиваться нулевым символом
 String zeros = "\u0000\u0000";
 ```
+{%endraw%}
 
 ### Неизменяемость строк
 
+{% raw %}
 ```java
 String s = "stringIsImmutable";
 
@@ -352,38 +399,46 @@ String afterReplace = s.replace("Imm", "M");
 
 String allCapitals = s.toUpperCase();
 ```
+{%endraw%}
 
 Соединение двух строк также создает новую:
 
+{% raw %}
 ```java
 String hello = "Hello ";
 String world = "world!";
 String helloWorld = hello + world;
 ```
+{%endraw%}
 
 Что эквивалентно:
 
+{% raw %}
 ```java
 StringBuilder sb = new StringBuilder();
 sb.append(hello);
 sb.append(world);
 String helloWorld = sb.toString();
 ```
+{%endraw%}
 
 ### Сравнение строк
 
 Нужно делать через метод, чтобы не проверять ссылки на один объект:
 
+{% raw %}
 ```java
 boolean contentEquals = s1.equals(s2);
 
 boolean contentEqualsIgnoreCase = s1.equalsIgnoreCase(s2);
 ```
+{%endraw%}
 
 ## 2.4. Управляющие конструкции: условные операторы и циклы
 
 ### Условный оператор
 
+{% raw %}
 ```java
 if (weatherIsGood) {
     walkInThePark();
@@ -391,15 +446,19 @@ if (weatherIsGood) {
     learnJavaOnStepic();
 }
 ```
+{%endraw%}
 
 ### Тернарный условный оператор
 
+{% raw %}
 ```java
 System.out.println("Weather is " + (weatherIsGood ? "good" : "bad"));
 ```
+{%endraw%}
 
 ### Оператор switch
 
+{% raw %}
 ```java
 switch (digit) {
     case 0:
@@ -416,41 +475,51 @@ switch (digit) {
         text = "???";
 }
 ```
+{%endraw%}
 
 ### Цикл while
 
+{% raw %}
 ```java
 while (haveTime() && haveMoney()) {
     goShopping();
 }
 ```
+{%endraw%}
 
 ### Цикл do while
 
+{% raw %}
 ```java
 do {
     goShopping();
 } while (haveTime() && haveMoney());
 ```
+{%endraw%}
 
 ### Цикл for
 
+{% raw %}
 ```java
 for (int i = 0; i < args.length; i++) {
     System.out.println(args[i]);
 }
 ```
+{%endraw%}
 
 ### Цикл foreach
 
+{% raw %}
 ```java
 for (String arg : args) {
     System.out.println(arg);
 }
 ```
+{%endraw%}
 
 ### Оператор break
 
+{% raw %}
 ```java
 boolean found = false;
 
@@ -461,9 +530,11 @@ for (String element : haystack) {
     }
 }
 ```
+{%endraw%}
 
 ### Оператор continue
 
+{% raw %}
 ```java
 int count = 0;
 
@@ -474,9 +545,11 @@ for (String element : haystack) {
     count++;
 }
 ```
+{%endraw%}
 
 ### Метки
 
+{% raw %}
 ```java
 boolean found = false;
 
@@ -490,3 +563,4 @@ for (int[] row : matrix) {
     }
 }
 ```
+{%endraw%}

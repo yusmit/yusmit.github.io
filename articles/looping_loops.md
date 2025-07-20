@@ -1,7 +1,7 @@
 ---
 title: "Распутывая циклы Ansible"
-layout: none
-render_with_liquid: false  # Более явное отключение
+# layout: none
+# render_with_liquid: false  # Более явное отключение
 ---
 
 # Распутывая циклы Ansible
@@ -13,6 +13,7 @@ render_with_liquid: false  # Более явное отключение
 
 Cписок наверное самое простое и частоиспользуемое что можно перебрать в ansible. Перебирать элементы списка можно с использованием loop и Jinja фильтров:
 
+{% raw %}
 ```yaml
 - name: print list, reversed list and sorted list
   debug:
@@ -39,12 +40,14 @@ row2
 MSG:
 row13
 ```
+{%endraw%}
 
 ## Перебираем таблицы
 
 Теперь разберемся с простыми циклами по таблице. Ограничения python понятны - это не mathlab, заточенный под работу с матрицами, и каждая таблица-матрица-тензор удобнее всего представляется списком из списков из списков...
 Пробежимся по строкам, столбцам и элементам - слева направо сверху вниз и изменив порядок.
 
+{% raw %}
 ```yaml
 vars:
   table:
@@ -52,7 +55,9 @@ vars:
     - ['d', 'e', 'f']
     - ['g', 'h', 'i']
 ```
+{%endraw%}
 
+{% raw %}
 ```yaml
 - name: print rows
   debug:
@@ -74,9 +79,11 @@ vars:
     msg: '{{ item }}'
   loop: '{{ table[0]|zip(*table[1:])|list|flatten(levels=1) }}'
 ```
+{%endraw%}
 
 Результат
 
+{% raw %}
 ```yaml
 TASK [print rows] *
 MSG:
@@ -134,11 +141,13 @@ f
 MSG:
 i
 ```
+{%endraw%}
 
 ## Перебираем строки
 
 Почему строки после списков? Да потому что строка в ansible неитерируема из коробки и надо сделать приседание чтобы получить хорошо знакомый нам список.
 
+{% raw %}
 ```yaml
 - debug: var=test_string
 
@@ -189,12 +198,14 @@ hello
 MSG:
 World!
 ```
+{%endraw%}
 
 ## Перебираем словари
 
 Словари как и списки можно перебрать, сославшись на каждое значение словаря, сортировав словарь, или извлекая из словаря значение key и соответствующее value.
 Стоит обратить внимание что фильтр dictsort преобразует словарь в список и сортрует его по значению ключей.
 
+{% raw %}
 ```yaml
 vars:
   dict_pass:
@@ -202,7 +213,9 @@ vars:
     root : ['pass_21', 'pass_22']
     client : ['pass_31', 'pass_32']
 ```
+{%endraw%}
 
+{% raw %}
 ```yaml
 - name: print dict items
   debug:
@@ -219,9 +232,11 @@ vars:
     msg: '{{ item.key }} and {{ item.value.0 }} and {{ item.value.1 }}'
   loop: '{{ dict_pass|dict2items }}'
 ```
+{%endraw%}
 
 результат
 
+{% raw %}
 ```yaml
 TASK [print dict items] *
 MSG:
@@ -247,11 +262,13 @@ root and pass_21 and pass_22
 MSG:
 client and pass_31 and pass_32
 ```
+{%endraw%}
 
 ## Перебираем группы
 
 Наш инвентарь будет выглядеть так (не судите строго).
 
+{% raw %}
 ```ini
 [all]
 [all:children]
@@ -284,9 +301,11 @@ ansible_ssh_port='7722'
 ansible_user='ansible-allsudo'
 ansible_password='Ansible_pa$$word'
 ```
+{%endraw%}
 
 Попробуем вывести значение groups.
 
+{% raw %}
 ```yaml
 - name: print groups
   debug: var=groups
@@ -332,11 +351,13 @@ TASK [print groups]
     }
 }
 ```
+{%endraw%}
 
 Итак, имеем:
 
 groups - словарь, элементами которого являются списки. Проверяем:
 
+{% raw %}
 ```yaml
 - name: print groups as dict
   debug:
@@ -359,11 +380,13 @@ MSG:
 MSG:
 {'key': 'etcd_nodes', 'value': ['etcd-1.my.domain', 'etcd-2.my.domain', 'etcd-3.my.domain']}
 ```
+{%endraw%}
 
 Значит и обращаться с groups надо соответствующим образом - ьакже как и со словарем.
 
 Еще один способ итерироваться по хостам - использовать магическую переменную ansible_play_hosts.
 
+{% raw %}
 ```yaml
 - name: Create virtual group
   add_host:
@@ -397,11 +420,13 @@ ok: [kafka-1.my.domain] => {
     ]
 }
 ```
+{%endraw%}
 
 Стоит обратить внимание на то что первая таска с модулем *add_host* обрабатывается лишь однажды, несмотря на то что нет *run_once: true*. А *groups.firstnodes* является списком.
 
 Ну и посмотрим что внутри вновь созданной группы firstnodes:
 
+{% raw %}
 ```yaml
 - hosts: firstnodes
   gather_facts: false
@@ -421,3 +446,4 @@ ok: [postgres-1] => {}
 MSG:
 postgres-1 and postgres-1.my.domain
 ```
+{%endraw%}

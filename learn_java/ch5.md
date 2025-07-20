@@ -4,6 +4,7 @@
 
 ### `java.io.File`
 
+{% raw %}
 ```java
 // on Windows
 File javaExecutable = new File("C:\\jdk1.8.0_60\\bin\\java.exe");
@@ -13,9 +14,11 @@ File networkFolder = new File("\\\\server\\share");
 // on Unix
 File lsExecutable = new File("/usr/bin/ls");
 ```
+{%endraw%}
 
 ### Сборка пути
 
+{% raw %}
 ```java
 String sourceDirName = "src";
 String mainFileName = "Main.java";
@@ -24,26 +27,32 @@ String mainFilePath = sourceDirName + File.separator + mainFileName;
 
 File mainFile = new File(sourceDirName, mainFileName);
 ```
+{%endraw%}
 
 ### Абсолютные и относительные пути
 
+{% raw %}
 ```java
 File absoluteFile = new File("/usr/bin/java");
 absoluteFile.isAbsolute();  // true
 absoluteFile.getAbsolutePath();  // "/usr/bin/java"
 ```
+{%endraw%}
 
+{% raw %}
 ```java
 File relativeFile = new File("readme.txt");
 relativeFile.isAbsolute();  // false
 relativeFile.getAbsolutePath();  // "/home/stepik/readme.txt"
 relativeFile.getAbsoluteFile();  // Will return a File instance
 ```
+{%endraw%}
 
 Путь для относительных файлов разрешается относительно рабочей директории Java процесса.
 
 ### Разбор пути
 
+{% raw %}
 ```java
 File file = new File("/usr/bin/java");
 
@@ -53,19 +62,23 @@ String name = file.getName();  // "java"
 
 String parent = file.getParent():  // "/usr/bin"
 ```
+{%endraw%}
 
 ### Канонические пути
 
+{% raw %}
 ```java
 File file = new File("./prj/../symlink.txt");
 
 String canonicalPath = file.getCanonicalPath();  // "/home/stepik/readmt.txt"
 ```
+{%endraw%}
 
 Может быть вызван `java.io.IOException`.
 
 ### Работа с файлами
 
+{% raw %}
 ```java
 File java = new File("/usr/bin/java");
 java.exists();  // true
@@ -74,9 +87,11 @@ java.isDirectory();  // false
 java.length();  // 1536
 java.lastModified();  // 123191480500
 ```
+{%endraw%}
 
 ### Работа с директориями
 
+{% raw %}
 ```java
 File usrbin = new File("/usr/bin");
 usrbin.exists();  // true
@@ -85,15 +100,19 @@ usrbin.isDirectory();  // true
 usrbin.list();  // String[] or null
 usrbin.listFiles();  // File[] or null
 ```
+{%endraw%}
 
 ### Фильрация файлов
 
+{% raw %}
 ```java
 File[] javaSourceFiles = dir.listFiles(f -> f.getName().endWith(".java"));
 ```
+{%endraw%}
 
 Фильтр это объект реализующий один из двух интерфейсов:
 
+{% raw %}
 ```java
 java.io.FileFilter:
     boolean accept(File pathname)
@@ -101,9 +120,11 @@ java.io.FileFilter:
 java.io.FilenameFilter:
     boolean accept(File dir, String name)
 ```
+{%endraw%}
 
 ### Создание файла
 
+{% raw %}
 ```java
 try {
     boolean success = file.createNewFile();
@@ -111,29 +132,37 @@ try {
     // handle error
 }
 ```
+{%endraw%}
 
 ### Создание директории
 
+{% raw %}
 ```java
 File dir = new File("a/b/c/d");
 boolean success = dir.mkdir();
 bookean success2 = dir.mkdirs();
 ```
+{%endraw%}
 
 ### Удаление файла или директории
 
+{% raw %}
 ```java
 boolean success = file.delete();
 ```
+{%endraw%}
 
 ### Переименование или перемещение файла
 
+{% raw %}
 ```java
 boolean success = file.renameTo(targetFile);
 ```
+{%endraw%}
 
 ### `java.nio.file.Path`
 
+{% raw %}
 ```java
 Path path = Paths.get("prj/stepik");
 
@@ -141,9 +170,11 @@ File fromPath = path.toFile();
 
 Path fromFile = fromPath.toPath();
 ```
+{%endraw%}
 
 #### Разбор пути
 
+{% raw %}
 ```java
 Path java = Path.get("/usr/bin/java");
 java.isAbsolute();   // true
@@ -156,9 +187,11 @@ java.resolveSibling("javap");  // /usr/bin/javap
 java.startsWith("/usr");       // true
 Paths.get("/usr").relativize(java);  // bin/java
 ```
+{%endraw%}
 
 #### Работа с файлами
 
+{% raw %}
 ```java
 Path java = Paths.get("/usr/bin/java");
 Files.exists(java);  // true
@@ -167,9 +200,11 @@ Files.size(java);  // 1536
 Files.getLastModifiedTime(java).toMillis();  // 1231914805000
 Files.copy(java, Paths.get("/usr/bin/java_copy"), StandardCopyOption.REPLACE_EXISTING);
 ```
+{%endraw%}
 
 #### Работа с директориями
 
+{% raw %}
 ```java
 Path usrbin = Paths.get("/usr/bin");
 Files.exists(usrbin);       // true
@@ -181,9 +216,11 @@ try (DirectoryStream<Path> dirStream = Files.newDirectoryStream(usrbin)) {
     }
 }
 ```
+{%endraw%}
 
 #### Создание директорий
 
+{% raw %}
 ```java
 Path dir = Paths.get("a/b/c/d");
 
@@ -191,9 +228,11 @@ Files.createDirectory(dir);
 
 Files.createDirectories(dir);
 ```
+{%endraw%}
 
 #### Рекурсивное удаление
 
+{% raw %}
 ```java
 Path directory = Path.get("/tmp");
 
@@ -216,9 +255,11 @@ Files.walkFileTree(direcotry, new SimpleFileVisitor<Path>() {
     }
 }
 ```
+{%endraw%}
 
 #### Виртуальные файловые системы
 
+{% raw %}
 ```java
 Path zipPath = Paths.get("jdk1.8.0_60/src.zip");
 
@@ -235,6 +276,7 @@ try (FileSystem zipfs = FileSystem.newFileSystem(zipPath, null)) {
     }
 }
 ```
+{%endraw%}
 
 ## 5.2. Потоки байт
 
@@ -243,6 +285,7 @@ try (FileSystem zipfs = FileSystem.newFileSystem(zipPath, null)) {
 
 ### `InputStream`
 
+{% raw %}
 ```java
 package java.io;
 
@@ -263,6 +306,7 @@ public abstract class InputStream implements Closeable {
     public int available() {}
 }
 ```
+{%endraw%}
 
 - `read()` возвращает следующий байт из входного потока и сдвигается дальше, когда достигается конец потока метод возвращает `-1`, если вернулась не `-1`, то фактическое значение можно получить приведением `(byte)`, т.е. фактически взяв младшие 8 бит значения типа `int`
 - `read(byte b[])` принимает массив `byte` и пытается скачать из потока количество байт равное размеру массива
@@ -272,6 +316,7 @@ public abstract class InputStream implements Closeable {
 
 ### `OutputStream`
 
+{% raw %}
 ```java
 package java.io;
 
@@ -290,6 +335,7 @@ public abstract class OutputStream implements Closeable, Flushable {
     public void close() throws IOException {}
 }
 ```
+{%endraw%}
 
 - `write(int b)` выводит в поток один байт, младшие 8 бит переданного значения типа `int`
 - `write(byte b[])` выводит все содержимое массива
@@ -303,6 +349,7 @@ public abstract class OutputStream implements Closeable, Flushable {
 
 Копирование `InputStream -> OutputStream`:
 
+{% raw %}
 ```java
 int totalBytesWritten = 0;
 byte[] buf = new byte[1024];  // временный буфер
@@ -312,9 +359,11 @@ while ((blockSize = inputStream.read(buf)) -> 0 {
     totalBytesWritten += blockSize;
 }
 ```
+{%endraw%}
 
 ### Работа с файлами на диске
 
+{% raw %}
 ```java
 InputStream inputStream = new FileInputStream(new File("in.txt"));
 OutputStream outputStream = new FileOutputStream(new File("out.txt"));
@@ -322,9 +371,11 @@ OutputStream outputStream = new FileOutputStream(new File("out.txt"));
 InputStream inputStream = Files.newInputStream(Paths.get("in.txt"));
 OutputStream outputStream = Files.newOutputStream(Paths.get("out.txt"));
 ```
+{%endraw%}
 
 ### Чтение собственного байт-кода
 
+{% raw %}
 ```java
 import java.io.IOException;
 import java.io.InputStream;
@@ -344,9 +395,11 @@ public class ReadSelfClassByteCode {
     }
 }
 ```
+{%endraw%}
 
 ### Обмен данными по сети
 
+{% raw %}
 ```java
 try (Socker socket = new Socket("ya.ru", 80)) {
     OutputStream outputStream = socket.getOutputStream();
@@ -361,9 +414,11 @@ try (Socker socket = new Socket("ya.ru", 80)) {
     }
 }
 ```
+{%endraw%}
 
 ### Данные в памяти виртуальной машины
 
+{% raw %}
 ```java
 byte[] data = {1, 2, 3, 4, 5};
 InputStream inputStream = new ByteArrayInputStream(data);
@@ -371,9 +426,11 @@ InputStream inputStream = new ByteArrayInputStream(data);
 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 byte[] result = outputStream.toByteArray();
 ```
+{%endraw%}
 
 ### `DataOutputStream`
 
+{% raw %}
 ```java
 package java.io;
 
@@ -390,11 +447,13 @@ public class DataOutputStream extends FilterOutputStream implements DataOutput {
     }
 }
 ```
+{%endraw%}
 
 `DataOutputStream` добавляет методы для простой записи всех примитивных типов, а также `writeUTF()` для записи строк.
 
 ### `DataInputStream`
 
+{% raw %}
 ```java
 package java.io;
 
@@ -413,12 +472,14 @@ public class DataInputStream extends FilterInputStream implements DataInput {
     }
 }
 ```
+{%endraw%}
 
 - `DataInputStream` предоставляет методы для чтения всех примитивных типов и строк
 - Закрытие внешнего потока закрывает также и вложенные в него потоки
 
 ### Сжатие записываемых данных
 
+{% raw %}
 ```java
 byte[] originalData = {1, 2, 3, 4, 5};
 
@@ -437,6 +498,7 @@ try (InflaterInputStream iis = new InflaterInputStream(new ByteArrayInputStream(
     }
 }
 ```
+{%endraw%}
 
 ## 5.3. Потоки символов
 
@@ -445,6 +507,7 @@ try (InflaterInputStream iis = new InflaterInputStream(new ByteArrayInputStream(
 
 ### `java.io.Reader`
 
+{% raw %}
 ```java
 package java.io;
 
@@ -463,11 +526,13 @@ public abstract class Reader implements Readable, Closeable {
     public abstract void close() throws IOException;
 }
 ```
+{%endraw%}
 
 - `read` также возвращает `int`, но рассматривать нужно уже 2 младших байта
 
 ### `java.io.Writer`
 
+{% raw %}
 ```java
 package java.io;
 
@@ -486,17 +551,20 @@ public abstract class Writer implements Appendable, Closeable, Flushable {
     public abstract void close() throws IOException;
 }
 ```
+{%endraw%}
 
 - Имеет перегруженные методы `write` принимающие строку
 
 ### Превращание потока байт в поток символов
 
+{% raw %}
 ```java
 Reader reader = new InputStreamReader(inputStream, "UTF-8");
 
 Charset charset = StandardCharsets.UTF_8;
 Writer writer = new OutputStreamWriter(outputStream, charset);
 ```
+{%endraw%}
 
 - Кодировка передается либо строкой, либо объектом типа `Charset`
 - `Charset` находится в пакете `java.nio.charset`
@@ -504,6 +572,7 @@ Writer writer = new OutputStreamWriter(outputStream, charset);
 
 ### Чтение и запись тектовых файлов
 
+{% raw %}
 ```java
 Reader reader1 = new FileReader("int.txt");
 Writer writer1 = new FileWriter("out.txt");
@@ -511,9 +580,11 @@ Writer writer1 = new FileWriter("out.txt");
 Reader reader2 = new InputStreamReader(new FileInputStream("in.txt"), StandardCharsets.UTF_8);
 Writer writer2 = new OutputStreamWriter(new FileOutputStream("out.txt"), StandardCharsets.UTF_8);
 ```
+{%endraw%}
 
 ### Чтение/запись из/в массива или строки в памяти
 
+{% raw %}
 ```java
 Reader reader1 = new CharArrayReader(new char[] {'a', 'b', 'c'});
 Reader reader2 = new StringReader("Hello World!");
@@ -526,9 +597,11 @@ StringWriter writer2 = new StringWriter();
 writer2.write("Test");
 String resultString = writer2.toString();
 ```
+{%endraw%}
 
 ### Буферизация чтения
 
+{% raw %}
 ```java
 package java.io;
 
@@ -539,6 +612,7 @@ public class BufferReader extends Reader {
     public String readLine() throws IOException {}
 }
 ```
+{%endraw%}
 
 - Хоть мы и читаем символы по одному, однако `BufferReader` запрашивает у низлежащего потока сразу большие блоки и хранит их в буффере
 - Повышает производительность в случае больших объемов данных
@@ -547,6 +621,7 @@ public class BufferReader extends Reader {
 
 ### Чтение файла построчно
 
+{% raw %}
 ```java
 try (BufferedReader reader = Files.newBufferedReader(Paths.get("in.txt"), StandardCharsets.UTF_8)) {
     String line;
@@ -555,9 +630,11 @@ try (BufferedReader reader = Files.newBufferedReader(Paths.get("in.txt"), Standa
     }
 }
 ```
+{%endraw%}
 
 Если файл не большой:
 
+{% raw %}
 ```java
 List<String> lines Files.readAllLines(Paths.get("in.txt"), StandardCharsets.UTF_8);
 
@@ -565,28 +642,34 @@ for (String line : lines) {
     // process line
 }
 ```
+{%endraw%}
 
 ### Запись файла построчно
 
+{% raw %}
 ```java
 try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("out.txt"), StandardCharsets.UTF_8)) {
     writer.write("Hello");
     writer.newLine();  // Разделитель строк на текущей платформе
 }
 ```
+{%endraw%}
 
 Если файл не большой:
 
+{% raw %}
 ```java
 List<String> lines = Arrays.asList("Hello", "world");
 
 Files.write(Paths.get("out.txt"), lines, StandardCharsets.UTF_8);
 ```
+{%endraw%}
 
 ### Форматированный ввод-вывод разных типов
 
 #### Вывод
 
+{% raw %}
 ```java
 package java.io;
 
@@ -603,10 +686,12 @@ public class PrintWriter extends Writer {
     public boolean checkError() {}
 }
 ```
+{%endraw%}
 
 - `IOException` не бросается
 - Внутренний флаг ошибки можно проверить с помощью метода `checkError`
 
+{% raw %}
 ```java
 package java.io;
 
@@ -623,9 +708,11 @@ public class PrintStream extends FilterOutputStream implements Appendable, Close
     public boolean checkError() {}
 }
 ```
+{%endraw%}
 
 #### Ввод (старый)
 
+{% raw %}
 ```java
 // java.io.StreamTokenizer
 StreamTokenizer streamTokenizer = new StreamTokenizer(new StringReader("Hello world"));
@@ -633,9 +720,11 @@ StreamTokenizer streamTokenizer = new StreamTokenizer(new StringReader("Hello wo
 // java.util.StringTokenizer
 StringTokenizer stringTokenizer = new StringTokenizer("Hello world");
 ```
+{%endraw%}
 
 #### Ввод (новый)
 
+{% raw %}
 ```java
 Reader reader = new StringReader("abc|true|1,1e3|-42");
 
@@ -648,9 +737,11 @@ bookean bool = scanner.nextBoolean();
 double dbl = scanner.nextDouble();
 int integer = scanner.nextInt();
 ```
+{%endraw%}
 
 ### Стандартные потоки
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -663,5 +754,6 @@ public final class System {
     public static final PrintStream err = null;
 }
 ```
+{%endraw%}
 
 ## 5.4. Продвинутые возможности

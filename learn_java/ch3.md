@@ -11,6 +11,7 @@
 
 ### Пакеты
 
+{% raw %}
 ```java
 package org.stepic.java;  // Принадлежность класса пакету
 
@@ -18,6 +19,7 @@ public class HelloWorld {
     // ...
 }
 ```
+{%endraw%}
 
 Полное имя класса из примера выше: `org.stepic.java.HelloWorld`.
 
@@ -26,24 +28,29 @@ public class HelloWorld {
 Классы того же пакета могут ссылаться друг на друга по короткому имени. Классы разных пакетов должны ссылаться друг на
 друга по полному имени или использовать импорт:
 
+{% raw %}
 ```java
 import org.stepic.java.HelloWorld;
 
 import java.util.*;
 ```
+{%endraw%}
 
 ### import static
 
 Используется для импорта статических полей и методов:
 
+{% raw %}
 ```java
 import static java.lang.Math.sqrt;
 
 import static java.lang.System.out;
 ```
+{%endraw%}
 
 ### Пакеты стандартной библиотека
 
+{% raw %}
 ```java
 java.lang
 java.io
@@ -55,9 +62,11 @@ java.util.regex
 javax.xml
 ...
 ```
+{%endraw%}
 
 ### Пакеты для стороннего кода
 
+{% raw %}
 ```java
 org.stepik.java
 com.google.common
@@ -67,9 +76,11 @@ net.sf.json
 io.netty
 ...
 ```
+{%endraw%}
 
 ### Модификаторы доступа
 
+{% raw %}
 ```java
 public class ModifiedDemo {
 
@@ -82,6 +93,7 @@ public class ModifiedDemo {
     private void inClass() {}
 }
 ```
+{%endraw%}
 
 - `public` - разрешен доступ отовсюду без ограничений
 - `protecterd` - доступ разрешен только для классов наследников и для классов текущего пакета
@@ -92,17 +104,20 @@ public class ModifiedDemo {
 
 ## 3.3. Объявления класса
 
+{% raw %}
 ```java
 package java.lang;
 
 public final class Integer {}
 ```
+{%endraw%}
 
 В файле может быть только один public класс. Ключевое слово final в объявлении класса означает что от данного класса
 нельзя наследоваться.
 
 ### Поля
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -110,12 +125,14 @@ public final class Integer {
     private final int value;
 }
 ```
+{%endraw%}
 
 Модификатор final у поля означает что полю можно присвоить значение только один раз, после чего изменения будут
 запрещены.
 
 ### Конструкторы
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -128,9 +145,11 @@ public final class Integer {
     }
 }
 ```
+{%endraw%}
 
 Без объявления конструктора в классе будет создан конструктор по умолчанию. Запрет на создание экземпляров класса:
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -138,9 +157,11 @@ public final class Math {
     private Math() {}
 }
 ```
+{%endraw%}
 
 В классе может быть несколько конструкторов с разными параметрами:
 
+{% raw %}
 ```java
 package java.math;
 
@@ -153,9 +174,11 @@ public class BigInteger {
     public BigInteger(String val, int radix) {}
 }
 ```
+{%endraw%}
 
 Для реализации деструктора стоит завести отдельный метод close и вызвать его самостоятельно:
 
+{% raw %}
 ```java
 package java.io;
 
@@ -168,9 +191,11 @@ public class FileInputStream {
     public void close() {}
 }
 ```
+{%endraw%}
 
 ### Методы
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -183,6 +208,7 @@ public final class Integer {
     }
 }
 ```
+{%endraw%}
 
 Модификатор final у метода означает что данный метод не может быть переопределен в классах-наследниках.
 
@@ -190,6 +216,7 @@ public final class Integer {
 
 В классе может быть несколько методов с одинаковыми именами, но разным набором параметров:
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -202,9 +229,11 @@ public final class String {
     public int indexOf(int ch, int fromIndex) {}
 }
 ```
+{%endraw%}
 
 ### Статические поля и методы
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -217,9 +246,11 @@ public final class Integer {
     }
 }
 ```
+{%endraw%}
 
 ### Вложенные классы
 
+{% raw %}
 ```java
 package java.util;
 
@@ -236,11 +267,13 @@ public class ArrayList<E> {
     }
 }
 ```
+{%endraw%}
 
 Вложенный класс, объявленный с модификатором `static` теряет возможность обращаться к нестатическим членам внешнего класса.
 
 ### Перечисления
 
+{% raw %}
 ```java
 public class BadExample {
     public static final int MONDAY = 1;
@@ -252,9 +285,11 @@ public class BadExample {
     public static final int SUNDAY = 1;
 }
 ```
+{%endraw%}
 
 Пример с перечислением:
 
+{% raw %}
 ```java
 package java.time;
 
@@ -271,14 +306,17 @@ public enum DayOfWeek {
     // Можно создать конструктор и передавать аргументы в элементы выше
 }
 ```
+{%endraw%}
 
 Методы:
 
+{% raw %}
 ```java
 for (DayOfWeek day : DayOfWeek.values()) {
     System.out.println(day.ordinal() + " " + day.name());
 }
 ```
+{%endraw%}
 
 - `name()` - возвращает строку - имя элемента как в исходном коде
 - `ordinal()` - возвращает число - порядковый метод элемента перечисления, начиная с нуля
@@ -286,6 +324,7 @@ for (DayOfWeek day : DayOfWeek.values()) {
 
 ### Аннотации
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -298,6 +337,7 @@ public final class Character {
     public static final Class<Character> TYPE = (Class<Character>) Class.getPrivitiveClass("char");
 }
 ```
+{%endraw%}
 
 ## 3.4. Наследование. Класс Object
 
@@ -305,6 +345,7 @@ public final class Character {
 
 Унаследоваться можно только от одного класса.
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -315,11 +356,13 @@ public final class BigDecimal extends Number {
     // it's inherited from Number
 }
 ```
+{%endraw%}
 
 ### Переопределение
 
 Возвращаемое значени подкласса должно быть того же класса что и оригинал или быть его подкласса.
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -331,6 +374,7 @@ public final class StringBuilder extends AbstractStringBuilder {
     // AbstractStringBuilder append(String str)
 }
 ```
+{%endraw%}
 
 ### Конструкторы
 
@@ -338,6 +382,7 @@ public final class StringBuilder extends AbstractStringBuilder {
 то компилятор сам подставит вызов родительского конструктора первой строчкой в конструктор наследника, в противном
 случае нужно сделать все это руками:
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -353,16 +398,19 @@ public final class StringBuilder extends AbstractStringBuilder {
     }
 }
 ```
+{%endraw%}
 
 Использование ключевого слова `super` разрешено только к теле класса наследника.
 
 ### Наследование по умолчанию
 
+{% raw %}
 ```java
 package java.lang;
 
 public final class String /* extends object */ {}
 ```
+{%endraw%}
 
 ### Liskov Substitution Principle
 
@@ -375,6 +423,7 @@ public final class String /* extends object */ {}
 Класс может соответствовать и абстрактному понятию. Для выражения этой концепции используется ключевое слово
 `abstract`:
 
+{% raw %}
 ```java
 public abstract class Shape {
 
@@ -393,29 +442,35 @@ public abstract class Shape {
     }
 }
 ```
+{%endraw%}
 
 Для абстрактного класса нельзя создавать экземпляры. У абстрактного класса могут быть абстрактные методы (без
 реализации):
 
+{% raw %}
 ```java
 public abstract class Shape {
     ...
 
     public abstract double getArea();
 ```
+{%endraw%}
 
 ### Интерфейс
 
 Альтернатива абстрактному классу, в котором все методы публичные и абстрактные.
 
+{% raw %}
 ```java
 public interface OrderService {
     Order[] getOrdersByClient(long clientId);
 }
 ```
+{%endraw%}
 
 Для обратной совместимости в интерфейсы добавлена возможность реализации default-методов:
 
+{% raw %}
 ```java
 package org.stepic.java.orders;
 
@@ -435,9 +490,11 @@ public interface OrderService {
     }
 }
 ```
+{%endraw%}
 
 Реалиация интерфейса:
 
+{% raw %}
 ```java
 public class OrderServiceImpl
         extends ServiceBase
@@ -449,6 +506,7 @@ public class OrderServiceImpl
 
 }
 ```
+{%endraw%}
 
 В стандартной библиотеки присутствует большое число интерфейсов.
 
@@ -456,6 +514,7 @@ public class OrderServiceImpl
 
 Интерфейс с единственным абстрактным методом:
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -464,9 +523,11 @@ public interface Comparator<T> {
     int compare(T o1, T o2);
 }
 ```
+{%endraw%}
 
 Пример использования:
 
+{% raw %}
 ```java
 package org.stepic.java.timer;
 
@@ -479,9 +540,11 @@ public class Timer {
 
 }
 ```
+{%endraw%}
 
 Главная программа:
 
+{% raw %}
 ```java
 package org.stepic.java.timer;
 
@@ -503,9 +566,11 @@ public class Main {
     }
 }
 ```
+{%endraw%}
 
 Упрощенно с ссылкой на метод:
 
+{% raw %}
 ```java
 public class Main {
 
@@ -520,9 +585,11 @@ public class Main {
     }
 }
 ```
+{%endraw%}
 
 Упрощенно с lambda:
 
+{% raw %}
 ```java
 public class Main {
 
@@ -531,3 +598,4 @@ public class Main {
         long time = timer.measureTime(() -> new BigDecimal("1234567").pow(10000));
         System.out.println(time);
 ```
+{%endraw%}

@@ -4,11 +4,13 @@
 
 ### Примеры работы с ошибками
 
+{% raw %}
 ```java
 public interface Calculator {
     double calculate(String expr);
 }
 ```
+{%endraw%}
 
 - Самый простой способ обработать ошибочное значение в методе - завершить исполнение с `System.exit(1)`
 - Лучший способ возвращать специальное значение, например `Double.NAN`.
@@ -16,32 +18,40 @@ public interface Calculator {
 
 ### Примеры исключений
 
+{% raw %}
 ```java
 Object nullRef = null;
 
 // java.lang.NullPointerException
 nullRef.toString();
 ```
+{%endraw%}
 
+{% raw %}
 ```java
 int[] array = {1, 2, 3};
 
 // java.lang.ArrayIndexOutOfBoundsException
 array[10];
 ```
+{%endraw%}
 
+{% raw %}
 ```java
 // java.io.FileNotFoundException
 new FileInputStream("not_existing_file");
 ```
+{%endraw%}
 
 ### `java.lang.Throwable`
 
 Все исключения в Java наследуются от `java.lang.Throwable`
 
+{% raw %}
 ```java
 throw new IllegalStateException("Invalid user.");
 ```
+{%endraw%}
 
 ### Методы `Throwable`
 
@@ -66,6 +76,7 @@ throw new IllegalStateException("Invalid user.");
 
 #### `java.lang.Exception`
 
+{% raw %}
 ```java
 import java.io.IOException;
 
@@ -75,6 +86,7 @@ public class ExceptionDemo {
     }
 }
 ```
+{%endraw%}
 
 #### `java.lang.RuntimeException`
 
@@ -84,6 +96,7 @@ public class ExceptionDemo {
 
 ### Собственное исключение
 
+{% raw %}
 ```java
 public class CalculatorException extends RuntimeException {
     public CalculatorException(String message) {
@@ -95,11 +108,13 @@ public class CalculatorException extends RuntimeException {
     }
 }
 ```
+{%endraw%}
 
 ## 4.2. Обработка исключений. Try-catch
 
 ### Базовый пример
 
+{% raw %}
 ```java
 for (;;) {
     System.out.print("Enter expression: ");
@@ -116,9 +131,11 @@ for (;;) {
     }
 }
 ```
+{%endraw%}
 
 ### Перехват нескольких исключений
 
+{% raw %}
 ```java
 try {
     // ...
@@ -128,9 +145,11 @@ try {
     e.printStackTrace();
 }
 ```
+{%endraw%}
 
 или в одном блоке `catch`
 
+{% raw %}
 ```java
 try {
     // ...
@@ -138,9 +157,11 @@ try {
     e.printStackTrace();
 }
 ```
+{%endraw%}
 
 ### Блок `finally`
 
+{% raw %}
 ```java
 InputStream is = new FileInputStream("a.txt");
 try {
@@ -149,11 +170,13 @@ try {
     is.close();
 }
 ```
+{%endraw%}
 
 `finally` обрабатывает всегда вне зависимости от вызванных исключений. Обычно предназначен для снятия блокировок, закрытия ресурсов.
 
 В примере выше, если исключение будет брошено внутри `try` и внутри `finally`, то оригинальное исключение будет потеряно. Для решения этой проблемы используется следующий паттерн
 
+{% raw %}
 ```java
 InputStream is = new FileInputStream("a.txt");
 try {
@@ -166,14 +189,17 @@ try {
     }
 }
 ```
+{%endraw%}
 
 ### `try` с ресурсами
 
+{% raw %}
 ```java
 try (InputStream is = new FileInputStream("a.txt")) {
     readFromInputStream(is);
 }
 ```
+{%endraw%}
 
 - Несколько ресурсов перечисляется через `;`
 - При выходе из блока все ресурсы будут освобождены (вызван метод `close()`)
@@ -181,6 +207,7 @@ try (InputStream is = new FileInputStream("a.txt")) {
 
 #### Идея за реализацией `try` с ресурсами
 
+{% raw %}
 ```java
 InputStream is = new FileInputStream("a.txt");
 try {
@@ -195,11 +222,13 @@ try {
 }
 is.close();
 ```
+{%endraw%}
 
 #### Ресурс
 
 **Ресурс** - любой объект реализующий `java.lang.AutoCloseable`.
 
+{% raw %}
 ```java
 package java.lang;
 
@@ -207,9 +236,11 @@ public static AutoClosable {
     void close() throws Exception;
 }
 ```
+{%endraw%}
 
 ### Обработка исключения
 
+{% raw %}
 ```java
 try {
     Double.parseDouble(...);
@@ -217,11 +248,13 @@ try {
     throw new CalculatorException(e);
 }
 ```
+{%endraw%}
 
 Для простого логирования ошибки: `e.printStackTrace()`.
 
 ### Плохой пример
 
+{% raw %}
 ```java
 String string;
 try {
@@ -231,13 +264,16 @@ try {
  }
  System.out.println(string);
 ```
+{%endraw%}
 
 ### Хороший пример
 
+{% raw %}
 ```java
 String string = object == null ? "null" : object.toString();
 System.out.println(string);
 ```
+{%endraw%}
 
 Можно также воспользоваться `Objects.toString(object)` из `java.util`, который реализует туже логику.
 
@@ -245,6 +281,7 @@ System.out.println(string);
 
 ### Пример
 
+{% raw %}
 ```java
 package org.stepik.java.logging;
 
@@ -255,9 +292,11 @@ public class LogDemo {
     private static final Logger LOGGER = Logger.getLogger(LogDemo.class.getName());
 }
 ```
+{%endraw%}
 
 ### Логирование сообщений
 
+{% raw %}
 ```java
 LOGGER.log(Level.INFO, "I'm logging");
 
@@ -265,21 +304,26 @@ LOGGER.log(Level.INFO, "I'm logging");
 
 LOGGER.warning("We have a problem!);
 ```
+{%endraw%}
 
 ### Настройка уровня логирования
 
 ```
+{%endraw%}
 LOGGER.setLevel(Level.WARNING);
 ```
+{%endraw%}
 
 ### Добавление в сообщение дополнительной информации
 
 ```
+{%endraw%}
 LOGGER.log(Level.FINEST, "Current value of x is " + x);
 LOGGER.log(Level.FINEST, "Current value of x is {0}", x);
 LOGGER.log(Level.FINEST, "Point coordinates are ({0}, {1})", new Object[] {x, y});
 LOGGER.log(Level.SEVERE, "Unexpected exception", e);
 ```
+{%endraw%}
 
 ### Обработчики сообщений
 
@@ -298,6 +342,7 @@ LOGGER.log(Level.SEVERE, "Unexpected exception", e);
 
 ### Полный пример
 
+{% raw %}
 ```java
 Logger logger = Logger.getLogger(Stepik.class.getName());
 Handler handler;
@@ -314,4 +359,5 @@ logger.addHandler(handler);
     
 logger.log(Level.INFO, "test info");
 logger.log(Level.WARNING, "test warning"); // Выводится в файл
+{% raw %}
 ```
