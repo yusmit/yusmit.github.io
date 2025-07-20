@@ -2,3 +2,4 @@ theme: jekyll-theme-minimal
 title: Octocat's homepage
 description: Bookmark
 render_with_liquid: false  # Более явное отключение
+markdown: CommonMark
