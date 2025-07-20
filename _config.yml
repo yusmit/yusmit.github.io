@@ -1,4 +1,4 @@
-theme: minimal
+theme: jekyll-theme-slate
 # title: Homepage
 # description: Bookmark
 # render_with_liquid: false  # Более явное отключение
