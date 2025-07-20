@@ -1,9 +1,7 @@
-theme: jekyll-theme-minimal
+theme: jekyll-theme-dinky
 # title: Homepage
 # description: Bookmark
 # render_with_liquid: false  # Более явное отключение
 # markdown: CommonMark
 plugins:
   - jekyll-relative-links
-minimal:
-  skin: dark
