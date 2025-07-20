@@ -2,6 +2,7 @@
 title: "Распутывая циклы Ansible"
 date: 2023-10-01
 liquid: false 
+render_with_liquid: false  # Более явное отключение
 ---
 
 # Распутывая циклы Ansible
