@@ -308,16 +308,16 @@ LOGGER.warning("We have a problem!);
 
 ### Настройка уровня логирования
 
+{%raw%}
 ```
-{%endraw%}
 LOGGER.setLevel(Level.WARNING);
 ```
 {%endraw%}
 
 ### Добавление в сообщение дополнительной информации
 
+{%raw%}
 ```
-{%endraw%}
 LOGGER.log(Level.FINEST, "Current value of x is " + x);
 LOGGER.log(Level.FINEST, "Current value of x is {0}", x);
 LOGGER.log(Level.FINEST, "Point coordinates are ({0}, {1})", new Object[] {x, y});
@@ -359,5 +359,5 @@ logger.addHandler(handler);
     
 logger.log(Level.INFO, "test info");
 logger.log(Level.WARNING, "test warning"); // Выводится в файл
-{% raw %}
 ```
+{% endraw %}
