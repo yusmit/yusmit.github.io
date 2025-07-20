@@ -1,6 +1,7 @@
 ---
 title: "Распутывая циклы Ansible"
 date: 2023-10-01
+liquid: false 
 ---
 
 # Распутывая циклы Ansible
