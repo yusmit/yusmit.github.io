@@ -195,9 +195,8 @@ vars:
 
 1. Запустите плейбук с `-vvv`
 2. Убедитесь что в выводе нет:
-
+{% raw %}
    ```
-{% endraw %}
    - "Changed": true, "DB_PASSWORD": "s3cr3t"
    + "output": "********"
    ```
