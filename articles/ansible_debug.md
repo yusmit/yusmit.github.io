@@ -15,6 +15,7 @@
 
 Самое очевидное что приходит на ум это использование вспомогательного отладочного вывода. Тут нам на помощь приходит встроенный модуль `debug`. Все просто как 3 копейки - дебаг позволяет вывести сообщение или значение переменной.
 
+{% raw %}
 ```yaml
 ---
 - name: Print the gateway for each host when defined
@@ -23,9 +24,11 @@
   when: ansible_default_ipv4.gateway is defined
 
 ```
+{% endraw %}
 
 Даже результат выполнения shell можно вывести определяя промежуточную переменную - словарь и печатая ее по ходу выполнения:
 
+{% raw %}
 ```yaml
 ---
 - name: Get uptime information
@@ -37,6 +40,7 @@
     var: result.stdout
     verbosity: 2
 ```
+{% endraw %}
 
 ## Проверка синтаксиса syntax-check
 
@@ -92,6 +96,7 @@ Ansible-lint https://github.com/ansible/ansible-lint проверяет плэй
 
 Пример использования:
 
+{% raw %}
 ```yaml
 ---
 - name: Debugger demo
@@ -105,6 +110,7 @@ Ansible-lint https://github.com/ansible/ansible-lint проверяет плэй
       name: "{{ pkg_name }}"
       state: present
 ```
+{% endraw %}
 
 ## Запуск с демонстрацией отличий
 

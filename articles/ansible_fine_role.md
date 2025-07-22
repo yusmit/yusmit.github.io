@@ -42,6 +42,7 @@
 * [Хочешь мира - пиши документацию.](#readme)
 * [Тестируй все изменения](#test).
 
+{% raw %}
 ```yaml
 ---
 - name: Check variables
@@ -68,6 +69,7 @@
   meta: flush_handlers
   tags: always
 ```
+{% endraw %}
 
 ### Разделение функционала по тегам
 
@@ -90,6 +92,7 @@
 
 Особое внимание стоит уделить применению (apply) тегов, тут важно учесть, что роль должна проходить в *dryrun (check\_mode)* перед установкой полностью, а после установки, с использованием любого из тегов. Если лениво подписывать каждую таску тегом можно применить вот такую конструкцию:
 
+{% raw %}
 ```yaml
 - name: Check variables
   include_tasks:
@@ -98,9 +101,11 @@
       tags: check # применяет тег ко всем таскам в файле
   tags: check
 ```
+{% endraw %}
 
 **Иногда получается вот такая структура:**
 
+{% raw %}
 ```bash
 my_app/
 ├── tasks/
@@ -111,6 +116,7 @@ my_app/
 │   ├── remove.yml
 │   └── main.yml  # импорт всех задач с тегами
 ```
+{% endraw %}
 
 ### Безопасная работа с секретами в Ansible: no\_log: true
 
@@ -122,6 +128,7 @@ my_app/
 
 #### Правильная реализация
 
+{% raw %}
 ```yaml
 # Для отдельных задач с секретами
 - name: Set database password
@@ -182,6 +189,7 @@ vars:
 vars:
   msql_password: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=secret/data/hello token=my_vault_token url=http://myvault_url:8200') }}"
 ```
+{% endraw %}
 
 ### Как проверить защиту?
 
@@ -189,14 +197,17 @@ vars:
 2. Убедитесь что в выводе нет:
 
    ```
+{% endraw %}
    - "Changed": true, "DB_PASSWORD": "s3cr3t"
    + "output": "********"
    ```
+{% endraw %}
 
 ### Проверка пререквизитов в pre\_tasks
 
 Чтобы гарантировать корректную работу роли, все требования должны проверяться **до** её выполнения. Для этого используем `pre_tasks` в плейбуке tasks/main.yml.
 
+{% raw %}
 ```yaml
 ---
 - name: "1. Check OS compatibility (Ubuntu/Debian)"
@@ -252,6 +263,7 @@ vars:
     fail_msg: "'my_param' must be between 0 and 100"
     success_msg: "'my_param' is between 0 and 100"
 ```
+{% endraw %}
 
 #### Нюансы реализации:
 
@@ -276,6 +288,7 @@ vars:
 1. **Продолжить выполнение**, если конфиг скопировался, но сервис не перезапустился.
 2. **Записать ошибку** в лог, но не прерывать всю роль.
 
+{% raw %}
 ```yaml
 ---
 - name: Critical operations block
@@ -308,6 +321,7 @@ vars:
     var: role_errors
   failed_when: role_errors | length > 0
 ```
+{% endraw %}
 
 #### Как это работает:
 
@@ -325,6 +339,7 @@ vars:
 
 #### Пример вывода при ошибках:
 
+{% raw %}
 ```json
 "role_errors": [
   {
@@ -333,6 +348,7 @@ vars:
   }
 ]
 ```
+{% endraw %}
 
 #### Преимущества такого подхода:
 
@@ -356,6 +372,7 @@ vars:
 
 Примеры использования.
 
+{% raw %}
 ```yaml
 # Команды, которые всегда меняют состояние
 - name: Check service stataus
@@ -404,6 +421,7 @@ vars:
     - license_check.rc != 0
     - "'Expired' in license_check.stdout"
 ```
+{% endraw %}
 
 #### Как проверить идемпотентность
 
@@ -429,6 +447,7 @@ vars:
 
 Создаем кастомный модуль
 
+{% raw %}
 ```bash
 roles/
 └── my_role/
@@ -439,9 +458,11 @@ roles/
     └── defaults/
         └── main.yml
 ```
+{% endraw %}
 
 Пример модуля (`library/cert_validator.py`):
 
+{% raw %}
 ```python
 #!/usr/bin/python3
 
@@ -492,9 +513,11 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+{% endraw %}
 
 ### Используем модуль в роли
 
+{% raw %}
 ```yaml
 ---
 - name: Validate SSL certificate
@@ -507,6 +530,7 @@ if __name__ == '__main__':
     msg: "Certificate expires on {{ cert_check.expiry_date }}"
   when: not cert_check.valid
 ```
+{% endraw %}
 
 ### Преимущества подхода
 
@@ -524,6 +548,7 @@ if __name__ == '__main__':
   ```bash
   python library/cert_validator.py '{"cert_path":"/tmp/cert.pem"}'
   ```
+{% endraw %}
 
 #### Альтернативы для простых случаев
 
@@ -536,12 +561,14 @@ if __name__ == '__main__':
      ansible.builtin.script:
        cmd: scripts/validate_cert.sh {{ cert_path }}
    ```
+{% endraw %}
 2. **Фильтры Jinja2**
 
    ```yaml
    - set_fact:
        is_valid: "{{ cert_data | regex_search('VALID') }}"
    ```
+{% endraw %}
 
 ### Обработчики (handlers/main.yml)
 
@@ -560,11 +587,13 @@ if __name__ == '__main__':
 
 И всегда добавь в конец роли принудительный вызов хендлеров. И конечно появляется логичный вопрос - а почему, зачем? Ответ: потому, что все хендлеры по умолчанию срабатывают не по завершению роли, а по завершению плея. И если в одном плее указано несколько ролей есть секция tasks и post\_task, и они завязаны на результат выполнения конкретной роли, то тогда обязательно надо принудительно хендлеры в конце этой роли вызывать. ( Огромное спасибо за информацию [FactorT](https://habr.com/ru/users/FactorT/) )
 
+{% raw %}
 ```yaml
 - name: Flush handlers at end
   meta: flush_handlers
   tags: always
 ```
+{% endraw %}
 
 ### Документация Ansible-роли (README.md)
 
