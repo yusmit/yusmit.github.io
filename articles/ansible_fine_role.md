@@ -196,6 +196,7 @@ vars:
 1. Запустите плейбук с `-vvv`
 2. Убедитесь что в выводе нет:
 {% raw %}
+{% raw %}
    ```
    - "Changed": true, "DB_PASSWORD": "s3cr3t"
    + "output": "********"
@@ -543,10 +544,10 @@ if __name__ == '__main__':
 * Добавляйте документацию
 * Обрабатывайте ошибки
 * Тестируйте локально
-
-  ```bash
-  python library/cert_validator.py '{"cert_path":"/tmp/cert.pem"}'
-  ```
+{% raw %}
+```bash
+python library/cert_validator.py '{"cert_path":"/tmp/cert.pem"}'
+```
 {% endraw %}
 
 #### Альтернативы для простых случаев
@@ -554,7 +555,7 @@ if __name__ == '__main__':
 Если модуль — это overkill, используйте:
 
 1. `ansible.builtin.script`
-
+{% raw %}
    ```yaml
    - name: Run validation script
      ansible.builtin.script:
@@ -563,6 +564,7 @@ if __name__ == '__main__':
 {% endraw %}
 2. **Фильтры Jinja2**
 
+{% raw %}
    ```yaml
    - set_fact:
        is_valid: "{{ cert_data | regex_search('VALID') }}"
