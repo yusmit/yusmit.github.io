@@ -6,10 +6,10 @@
 - [Как запилить годную ролюху в Ansible](./articles/ansible_fine_role.md)
 
 
-
 ## Подготовка к собеседованиям (SRE/DevOps)
 ### Контейнеризация
-- [Docker](./sobes_sre_devops/docker.md)  
+- [Docker](./sobes_sre_devops/docker2.md)  
+- [Docker Q&A](./sobes_sre_devops/docker_q.md)  
 - [Docker Networking](./sobes_sre_devops/docker_net.md)  
 
 ### Базы данных
