@@ -36,3 +36,4 @@
 
 ### IAC
 - [Terraform](./sobes_sre_devops/terraform1.md)
+- [GitLab CI/CD](./sobes_sre_devops/gitlab_cicd.md)
