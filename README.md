@@ -25,10 +25,13 @@
 - [Общие вопросы по сетям](./sobes_sre_devops/network.md)
 - [Диагностика сетевых проблем](./sobes_sre_devops/net_troubleshooting.md)  
 - [Балансировка нагрузки](./sobes_sre_devops/loadbalance.md)  
+- [REST API](./sobes_sre_devops/rest_api.md)
 
 ### Безопасность и API
 - [Vault](./sobes_sre_devops/vault.md)  
-- [REST API](./sobes_sre_devops/rest_api.md)  
   
 ### SRE
 - [SRE](./sobes_sre_devops/sre.md)
+  
+### IAC
+- [Terraform](./sobes_sre_devops/terraform1.md)
