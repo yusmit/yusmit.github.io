@@ -32,6 +32,7 @@
   
 ### SRE
 - [SRE](./sobes_sre_devops/sre.md)
-  
+- [DevSecOps Common](./sobes_sre_devops/devsecops_common.md)
+
 ### IAC
 - [Terraform](./sobes_sre_devops/terraform1.md)
