@@ -8,6 +8,7 @@
 ## Подготовка к собеседованиям (SRE/DevOps)
 
 ### План и контроль подготовки
+- [Soft Skills Interview Simulator](./sobes_sre_devops/soft_scils.md)
 - [Risks и Missing Requirements](./sobes_sre_devops/00_risks_missing_requirements.md)
 - [Interview Readiness Tracker](./sobes_sre_devops/interview_readiness_tracker.md)
 - [Weekly Oral Drills](./sobes_sre_devops/oral_interview_drills.md)
