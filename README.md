@@ -4,6 +4,7 @@
 - [Отладка плэйбуков ansible](./articles/ansible_debug.md)
 - [Покрываем плэйбуками ansible IaC в части предоставления доступа](./articles/ansible_iac.md)
 - [Как запилить годную ролюху в Ansible](./articles/ansible_fine_role.md)
+- [Быстрый мониторинг логов через Zabbix UserParameter](./articles/zabbix.md)
 
 ## Подготовка к собеседованиям (SRE/DevOps)
 
