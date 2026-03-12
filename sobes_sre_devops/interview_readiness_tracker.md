@@ -17,6 +17,10 @@
 | Observability/Incident response |  |  |  |  |  |
 | PostgreSQL/Patroni/PgBouncer |  |  |  |  |  |
 | Network troubleshooting |  |  |  |  |  |
+| Linux на железе (установка/диагностика) |  |  |  |  |  |
+| Storage: RAID/LVM/BTRFS/ZFS |  |  |  |  |  |
+| Сетевое оборудование (коммутаторы/маршрутизаторы) |  |  |  |  |  |
+| BGP (база для SRE) |  |  |  |  |  |
 | Vault / Secrets |  |  |  |  |  |
 | DevSecOps / Compliance |  |  |  |  |  |
 | System design (SRE/DevOps) |  |  |  |  |  |
