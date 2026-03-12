@@ -106,7 +106,7 @@ podman compose up -d
 * Update interval: `1m`
 
 Выглядит это примерно так
-![](https://habrastorage.org/webt/qw/fr/4o/qwfr4osw_jz3cqou0dlncvuv2k8.png)
+![](./images/zabbix/zabbix-items.png)
 
 ## Проверяем, что всё работает
 
@@ -123,7 +123,7 @@ demo.cmd.uptime_seconds                       [s|18965]
 ```
 
 Но не забываем наше любимое - *у меня локально работает* - надо протестировать на живом хосте, через кнопку **Test**.
-![](https://habrastorage.org/webt/mh/dq/zo/mhdqzopzkavpfv_di5nzfveprrk.png)
+![](./images/zabbix/zabbix-test-button.png)
  
 Ежели не работает - ищем причину.
 
@@ -137,7 +137,7 @@ demo.cmd.uptime_seconds                       [s|18965]
 * Severity: **High** (пусть будет красно)
 * Expression: `min(/Demo Linux Host/demo.log.panic.recent,5m) > 0`
 
-![](https://habrastorage.org/webt/gv/we/bv/gvwebvznolirqys38rtx2bqkz7m.png)
+![](./images/zabbix/zabbix-trigger.png)
 
 Теперь если за последние 5 минут в логе промелькнула хоть одна PANIC (а это легко симулировать) — Zabbix заорёт. Красота.
 
