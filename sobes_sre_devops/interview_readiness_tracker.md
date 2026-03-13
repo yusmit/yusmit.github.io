@@ -24,6 +24,13 @@
 | Vault / Secrets |  |  |  |  |  |
 | DevSecOps / Compliance |  |  |  |  |  |
 | System design (SRE/DevOps) |  |  |  |  |  |
+| Talos Linux / Immutable Kubernetes |  |  |  |  |  |
+| HAProxy / High-load load balancing |  |  |  |  |  |
+| VictoriaMetrics / PromQL |  |  |  |  |  |
+| Puppet / Pulumi (сравнение с Ansible/Terraform) |  |  |  |  |  |
+| Service Mesh / mTLS / Traffic Management |  |  |  |  |  |
+| Cilium / eBPF |  |  |  |  |  |
+| Kubernetes / Talos security model |  |  |  |  |  |
 
 ## Правило готовности
 - Тема считается «готова к интервью», если:
