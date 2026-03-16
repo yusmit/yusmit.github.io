@@ -19,6 +19,9 @@
 - [Docker Q&A](./sobes_sre_devops/docker_q.md)
 - [Docker Networking](./sobes_sre_devops/docker_net.md)
 - [Kubernetes Core](./sobes_sre_devops/kubernetes_core.md)
+- [Kubernetes: продвинутые абстракции (шпаргалка)](./sobes_sre_devops/kubernetes_advanced_abstractions.md)
+- [Kubernetes: продвинутые абстракции (конспект урока)](./sobes_sre_devops/kubernetes_advanced_abstractions_lesson.md)
+- [Kubernetes: отладка](./sobes_sre_devops/kubernetes_troubleshouting.md)
 
 ### Базы данных
 - [PostgreSQL](./sobes_sre_devops/postgresql.md)
