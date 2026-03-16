@@ -14,6 +14,8 @@
 - [Interview Readiness Tracker](./sobes_sre_devops/interview_readiness_tracker.md)
 - [Weekly Oral Drills](./sobes_sre_devops/oral_interview_drills.md)
 
+### [Top вопросов](./sobes_sre_devops/top_answers.md)
+
 ### Контейнеризация
 - [Docker](./sobes_sre_devops/docker2.md)
 - [Docker Q&A](./sobes_sre_devops/docker_q.md)
