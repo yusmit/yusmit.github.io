@@ -23,7 +23,10 @@
 - [Kubernetes Core](./sobes_sre_devops/kubernetes_core.md)
 - [Kubernetes: продвинутые абстракции (шпаргалка)](./sobes_sre_devops/kubernetes_advanced_abstractions.md)
 - [Kubernetes: продвинутые абстракции (конспект урока)](./sobes_sre_devops/kubernetes_advanced_abstractions_lesson.md)
-- [Kubernetes: отладка](./sobes_sre_devops/kubernetes_troubleshouting.md)
+- [Kubernetes: отладка](./sobes_sre_devops/kubernetes_troubleshouting.md)- [Kubernetes: сетевые политики и](./sobes_sre_devops/kubernetes_network_policies.md)
+- [Kubernetes: масштабирование](./sobes_sre_devops/kubernetes_troubleshouting.md)
+- [Kubernetes: сетевые политики](./sobes_sre_devops/kubernetes_scaling.md)
+- [Kubernetes: Helm](./sobes_sre_devops/kubernetes_helm.md)
 
 ### Базы данных
 - [PostgreSQL](./sobes_sre_devops/postgresql.md)
