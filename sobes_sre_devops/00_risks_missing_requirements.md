@@ -19,6 +19,22 @@
 6. `Cilium` и `eBPF`: network policy, observability потоков, kube-proxy replacement, ограничения и риски.
 7. Security-модель Kubernetes и Talos: hardening control plane/node plane, доступ к API, policy-as-code, supply chain.
 
+## Актуализация по платформенным темам
+
+### Новые зоны риска
+1. Нужен более цельный ответ про жизненный цикл Kubernetes-кластера на `vm` и `bare metal`, а не только про базовые компоненты control plane и workload.
+2. `FluxCD` и GitOps раньше были покрыты фрагментарно; без отдельного теоретического контура легко путать `Helm`, `kubectl` и GitOps.
+3. Есть отдельные знания по сети Kubernetes, но нужен именно системный ответ про `CNI` и выбор между `Calico` и `Cilium`.
+4. Storage-часть (`CSI`, `Ceph`, `vSphere`) раньше не была закрыта как отдельный блок.
+5. `Kyverno` как policy-as-code и admission-контроль был недостаточно проявлен в общей структуре подготовки.
+6. По `Debian` нужна уверенная привязка именно к эксплуатации Kubernetes-нод: пакеты, `containerd`, `systemd`, `sysctl`, модули ядра, диагностика.
+7. Нужно уверенно связывать `Ansible`, `Terraform`, `GitLab CI/CD`, `Helm`, `FluxCD`, security policy и day-2 operations в один платформенный рассказ.
+
+### Что закрыто этим обновлением
+1. Углублены основные конспекты по Kubernetes, Helm, GitLab CI/CD, Linux и сетевым политикам.
+2. В `README.md` исправлены базовые проблемы с markdown-ссылками в разделе Kubernetes.
+3. В `interview_readiness_tracker.md` добавлены отдельные строки по `vm/bare metal`, `Helm/FluxCD`, `CNI/CSI`, `Istio`, `Kyverno` и `Debian`-нодам.
+
 ## Что уже закрыто этим обновлением
 1. Добавлены новые блоки в `kubernetes_core.md` по `Talos`, `service mesh`, `Cilium/eBPF` и security-модели.
 2. Добавлены блоки в `loadbalance.md` по `HAProxy` под высокую нагрузку.

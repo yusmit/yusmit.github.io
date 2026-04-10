@@ -31,6 +31,12 @@
 | Service Mesh / mTLS / Traffic Management |  |  |  |  |  |
 | Cilium / eBPF |  |  |  |  |  |
 | Kubernetes / Talos security model |  |  |  |  |  |
+| Kubernetes cluster lifecycle (VM / bare metal) |  |  |  |  |  |
+| Helm / FluxCD / GitOps |  |  |  |  |  |
+| CNI / CSI (Calico, Cilium, Ceph, vSphere) |  |  |  |  |  |
+| Istio / Service Mesh |  |  |  |  |  |
+| Kyverno / Policy-as-Code |  |  |  |  |  |
+| Debian для Kubernetes-нод |  |  |  |  |  |
 
 ## Правило готовности
 - Тема считается «готова к интервью», если:
